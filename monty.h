@@ -1,6 +1,12 @@
 #ifndef MONTY_H
 #define MONTY_H
 #include <stdio.h>
+#include <stdlib.h> /* Exit failure */
+#include <unistd.h> /* Standard I/O */
+#include <fcntl.h>	/* File modes */
+#include <string.h>
+#define _GNU_SOURCE
+#include <errno.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -33,6 +39,8 @@ typedef struct instruction_s
 } instruction_t;
 
 /* PROTOTYPES */
-
+void monky_interpreter(char *bytecodes, instruction_t *opcode_source);
+void push_func(stack_t **stack, unsigned int line_number);
+void pall_func(stack_t **stack, unsigned int operand);
 
 #endif /* MONTY_H */
