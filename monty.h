@@ -5,7 +5,6 @@
 #include <unistd.h> /* Standard I/O */
 #include <fcntl.h>	/* File modes */
 #include <string.h>
-#define _GNU_SOURCE
 #include <errno.h>
 
 /**
@@ -39,7 +38,7 @@ typedef struct instruction_s
 } instruction_t;
 
 /* PROTOTYPES */
-void monky_interpreter(char *bytecodes, instruction_t *opcode_source);
+void monky_interpreter(char **argv, instruction_t *opcode_source);
 void push_func(stack_t **stack, unsigned int line_number);
 void pall_func(stack_t **stack, unsigned int operand);
 

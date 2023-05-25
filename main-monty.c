@@ -1,6 +1,5 @@
 #include "monty.h"
 
-
 /**
  * main - Entry Point
  * @argc: Number of arguments
@@ -10,8 +9,6 @@
 
 int main(int argc, char *argv[])
 {
-	/* Declarations */
-	FILE *bytecodes;
 
 	/* Initialisations */
 	instruction_t opcode_source[] = {
@@ -24,15 +21,8 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	/* Processes*/
-	bytecodes = fopen(argv[1], O_RDONLY);
-	if (bytecodes != NULL)
-		monky_interpreter(bytecodes, opcode_source);
-	else
-	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+	monky_interpreter(argv, opcode_source);
 
 	return (0);
 }
+
