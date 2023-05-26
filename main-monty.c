@@ -43,10 +43,7 @@ int main(int argc, char *argv[])
 		op_code = strtok(buffer, "\n ");
 
 		if (op_code == NULL)
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", index, op_code);
-			exit(EXIT_FAILURE);
-		}
+			continue;
 
 		index_two = 0;
 		while (opcode_source[index_two].opcode != NULL)
@@ -69,6 +66,11 @@ int main(int argc, char *argv[])
 				break;
 			}
 			index_two++;
+		}
+		if (index_two == 3)
+		{
+			fprintf(stderr, "L%u: unknown instruction %s\n", index, op_code);
+			exit(EXIT_FAILURE);
 		}
 	}
 
