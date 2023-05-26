@@ -12,7 +12,7 @@ void pint_func(stack_t **stack, unsigned int line_number);
 int main(int argc, char *argv[])
 {
 	/* Declarations */
-	char buffer[1024], *op_code, *operand; /*Store readline, command and values*/
+	char buffer[100], *op_code, *operand; /*Store readline, command and values*/
 	FILE *bytecodes;
 	unsigned int index = 0;
 	stack_t *mobile_stack = NULL;
@@ -36,41 +36,39 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	else
+
+	while (fgets(buffer, sizeof(buffer), bytecodes))
 	{
-		while (fgets(buffer, sizeof(buffer), bytecodes))
+		index++;
+		op_code = strtok(buffer, "\n ");
+
+		if (op_code == NULL)
 		{
-			index++;
-			op_code = strtok(buffer, " ");
-			operand = strtok(NULL, " ");
+			fprintf(stderr, "L%d: unknown instruction %s\n", index, op_code);
+			exit(EXIT_FAILURE);
+		}
 
-			if (op_code == NULL)
+		index_two = 0;
+		while (opcode_source[index_two].opcode != NULL)
+		{
+			if (strcmp(op_code, opcode_source[index_two].opcode) == 0)
 			{
-				fprintf(stderr, "L%d: unknown instruction %s\n", index, op_code);
-				exit(EXIT_FAILURE);
-			}
-
-			index_two = 0;
-			while (opcode_source[index_two].opcode != NULL)
-			{
-				if (strcmp(op_code, opcode_source[index_two].opcode) == 0)
+				if (strcmp(op_code, "push") == 0)
 				{
-					if (strcmp(op_code, "push") == 0)
+					operand = strtok(NULL, "\n ");
+					if (operand == NULL || (atoi(operand) == 0 && operand[0] != '0'))
 					{
-						if (operand == NULL || (atoi(operand) == 0 && operand[0] != '0'))
-						{
-							fprintf(stderr, "L%u: usage: push integer\n", index);
-							exit(EXIT_FAILURE);
-						}
-
-						opcode_source[index_two].f(&mobile_stack, atoi(operand));
-						break;
+						fprintf(stderr, "L%u: usage: push integer\n", index);
+						exit(EXIT_FAILURE);
 					}
-					opcode_source[index_two].f(&mobile_stack, index);
+
+					opcode_source[index_two].f(&mobile_stack, atoi(operand));
 					break;
 				}
-				index_two++;
+				opcode_source[index_two].f(&mobile_stack, index);
+				break;
 			}
+			index_two++;
 		}
 	}
 
