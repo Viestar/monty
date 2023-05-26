@@ -18,14 +18,14 @@ void push_func(stack_t **stack, unsigned int operand)
 		exit(EXIT_FAILURE);
 	}
 
-	(*temp_stack).prev = NULL;
-	(*temp_stack).n = operand;
-	(*temp_stack).next = NULL;
+	temp_stack->prev = NULL;
+	temp_stack->n = operand;
+	temp_stack->next = NULL;
 
 	if (*stack)
 	{
-		(*(*stack)).prev = temp_stack;
-		(*temp_stack).next = *stack;
+		(*stack)->prev = temp_stack;
+		temp_stack->next = *stack;
 		*stack = temp_stack;
 	}
 	else
@@ -46,7 +46,7 @@ void pall_func(stack_t **stack, unsigned int operand)
 
 	while (temp_stack)
 	{
-		printf("%d\n", (*temp_stack).n);
-		temp_stack = (*temp_stack).next;
+		printf("%d\n", temp_stack->n);
+		temp_stack = temp_stack->next;
 	}
 }
