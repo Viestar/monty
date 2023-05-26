@@ -42,7 +42,7 @@ void sub_func(stack_t **stack, unsigned int line_number);
 void div_func(stack_t **stack, unsigned int line_number);
 void mul_func(stack_t **stack, unsigned int line_number);
 void mod_func(stack_t **stack, unsigned int line_number);
-
+void pchar_func(stack_t **stack, unsigned int line_number);
 void push_func(stack_t **stack, unsigned int line_number);
 void pall_func(stack_t **stack, unsigned int operand);
 void freee(stack_t *head);
