@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 		index++;
 		op_code = strtok(buffer, "\n ");
 
-		if (op_code == NULL)
+		if (op_code == NULL || op_code[0] == '#')
 			continue;
 
 		index_two = 0;
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 			{
 				if (strcmp(op_code, "push") == 0)
 				{
-					operand = strtok(NULL, "\n ");
+					operand = strtok(NULL, " \n");
 					if (operand == NULL || (atoi(operand) == 0 && operand[0] != '0'))
 					{
 						fprintf(stderr, "L%u: usage: push integer\n", index);
