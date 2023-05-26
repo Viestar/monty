@@ -38,6 +38,8 @@ typedef struct instruction_s
 } instruction_t;
 
 /* PROTOTYPES */
+void sub_func(stack_t **stack, unsigned int line_number);
+
 void push_func(stack_t **stack, unsigned int line_number);
 void pall_func(stack_t **stack, unsigned int operand);
 void freee(stack_t *head);
