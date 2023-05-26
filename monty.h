@@ -38,9 +38,9 @@ typedef struct instruction_s
 } instruction_t;
 
 /* PROTOTYPES */
-void monty_interpreter(int argc, char *argv[], instruction_t *opcode_source);
 void push_func(stack_t **stack, unsigned int line_number);
 void pall_func(stack_t **stack, unsigned int operand);
 void freee(stack_t *head);
+void pint_func(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
