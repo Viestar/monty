@@ -1,5 +1,7 @@
 #include "monty.h"
 
+void pint_func(stack_t **stack, unsigned int line_number);
+
 /**
  * main - Entry Point
  * @argc: Number of arguments
@@ -18,7 +20,7 @@ int main(int argc, char *argv[])
 
 	/* Initialisations */
 	instruction_t opcode_source[] = {
-		{"pall", pall_func}, {"push", push_func}, {NULL, NULL}};
+		{"pall", pall_func}, {"push", push_func}, {"pint", pint_func}, {NULL, NULL}};
 
 	/* Program Condition checks */
 	if (argc < 2 || argc > 2)
@@ -75,4 +77,20 @@ int main(int argc, char *argv[])
 	fclose(bytecodes);
 	freee(mobile_stack);
 	return (0);
+}
+
+/**
+ * pint_func - Prints first item on stack
+ * @stack: Linked list
+ * @line_number:  file line number
+ */
+void pint_func(stack_t **stack, unsigned int line_number)
+{
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%u: can't pint_func, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+		printf("%d\n", (*stack)->n);
 }
