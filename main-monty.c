@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
 	/* Initialisations */
 	instruction_t opcode_source[] = {
-		{"pall", pall_func}, {"push", push_func}, {"pint", pint_func}, {"pop", pop_func}, {"swap", swap_func}, {NULL, NULL}};
+		{"pall", pall_func}, {"push", push_func}, {"pint", pint_func}, {"pop", pop_func}, {"swap", swap_func}, {"add", add_func}, {NULL, NULL}};
 
 	/* Program Condition checks */
 	if (argc < 2 || argc > 2)
