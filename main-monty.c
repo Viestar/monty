@@ -91,6 +91,6 @@ void pint_func(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pint_func, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	else
-		printf("%d\n", (*stack)->n);
+
+	printf("%d\n", (*stack)->n);
 }
