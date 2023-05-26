@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 		{"sub", sub_func},
 		{"div", div_func},
 		{"mul", mul_func},
+		{"mod", mod_func},
 		{NULL, NULL}};
 
 	/* Program Condition checks */
