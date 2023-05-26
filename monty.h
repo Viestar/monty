@@ -39,6 +39,7 @@ typedef struct instruction_s
 
 /* PROTOTYPES */
 void sub_func(stack_t **stack, unsigned int line_number);
+void div_func(stack_t **stack, unsigned int line_number);
 
 void push_func(stack_t **stack, unsigned int line_number);
 void pall_func(stack_t **stack, unsigned int operand);

@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
 		{"swap", swap_func},
 		{"add", add_func},
 		{"sub", sub_func},
+		{"div", div_func},
 		{NULL, NULL}};
 
 	/* Program Condition checks */
