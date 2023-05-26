@@ -15,5 +15,5 @@ void sub_func(stack_t **stack, unsigned int line_number)
 	}
 
 	(*stack)->next->n -= (*stack)->n;
-	pop_func(&stack, line_number);
+	pop_func(stack, line_number);
 }
