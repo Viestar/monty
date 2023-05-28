@@ -37,6 +37,18 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct queueORstack_s - opcode and its function
+ * @status: stack or queue
+ * Description: status for stack or queue
+ */
+
+typedef struct queueORstack_s
+{
+	int status;
+
+} queueORstack_t;
+
 /* PROTOTYPES */
 void sub_func(stack_t **stack, unsigned int line_number);
 void div_func(stack_t **stack, unsigned int line_number);
@@ -50,5 +62,8 @@ void pint_func(stack_t **stack, unsigned int line_number);
 void pop_func(stack_t **stack, unsigned int line_number);
 void swap_func(stack_t **stack, unsigned int line_number);
 void add_func(stack_t **stack, unsigned int line_number);
+
+/* Global variables */
+extern queueORstack_t queueORstack;
 
 #endif /* MONTY_H */
