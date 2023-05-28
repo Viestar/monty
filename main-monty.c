@@ -21,7 +21,6 @@ int main(int argc, char *argv[])
 	/* Initialisations */
 	instruction_t opcode_source[] = {
 		{"pall", pall_func},
-		{"push", push_func},
 		{"pint", pint_func},
 		{"pop", pop_func},
 		{"swap", swap_func},
@@ -29,12 +28,13 @@ int main(int argc, char *argv[])
 		{"sub", sub_func},
 		{"div", div_func},
 		{"mul", mul_func},
+		{"push", push_func},
 		{"mod", mod_func},
 		{"pchar", pchar_func},
 		{NULL, NULL}};
 
 	/* Program Condition checks */
-	if (argc < 2 || argc > 2)
+	if (argc != 2)
 	{
 		perror("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
@@ -56,29 +56,31 @@ int main(int argc, char *argv[])
 		if (op_code == NULL || op_code[0] == '#')
 			continue;
 
+		if (strcmp(op_code, "push") == 0)
+		{
+			operand = strtok(NULL, " \n");
+			if (operand == NULL || (atoi(operand) == 0 && operand[0] != '0'))
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", index);
+				exit(EXIT_FAILURE);
+			}
+
+			opcode_source[8].f(&mobile_stack, atoi(operand));
+			continue;
+		}
+
 		index_two = 0;
 		while (opcode_source[index_two].opcode != NULL)
 		{
 			if (strcmp(op_code, opcode_source[index_two].opcode) == 0)
 			{
-				if (strcmp(op_code, "push") == 0)
-				{
-					operand = strtok(NULL, " \n");
-					if (operand == NULL || (atoi(operand) == 0 && operand[0] != '0'))
-					{
-						fprintf(stderr, "L%u: usage: push integer\n", index);
-						exit(EXIT_FAILURE);
-					}
 
-					opcode_source[index_two].f(&mobile_stack, atoi(operand));
-					break;
-				}
 				opcode_source[index_two].f(&mobile_stack, index);
 				break;
 			}
 			index_two++;
 		}
-		if (index_two == 3)
+		if (index_two > 12)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", index, op_code);
 			exit(EXIT_FAILURE);
