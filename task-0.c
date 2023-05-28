@@ -14,7 +14,7 @@ void push_func(stack_t **stack, unsigned int operand)
 	temp_stack = malloc(sizeof(stack_t));
 	if (!temp_stack)
 	{
-		perror("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 

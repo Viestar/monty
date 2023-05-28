@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	/* Program Condition checks */
 	if (argc != 2)
 	{
-		perror("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 			}
 			index_two++;
 		}
-		if (index_two > 12)
+		if (index_two > 10)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", index, op_code);
 			exit(EXIT_FAILURE);
