@@ -9,6 +9,7 @@
 void push_func(stack_t **stack, unsigned int operand)
 {
 	stack_t *temp_stack, *new;
+
 	new = *stack;
 
 	/* Allocate memory for the temporary stack */
