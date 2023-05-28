@@ -8,7 +8,8 @@
 
 void push_func(stack_t **stack, unsigned int operand)
 {
-	stack_t *temp_stack;
+	stack_t *temp_stack, *new;
+	new = *stack;
 
 	/* Allocate memory for the temporary stack */
 	temp_stack = malloc(sizeof(stack_t));
@@ -24,9 +25,19 @@ void push_func(stack_t **stack, unsigned int operand)
 
 	if (*stack)
 	{
-		(*stack)->prev = temp_stack;
-		temp_stack->next = *stack;
-		*stack = temp_stack;
+		if (queueORstack.status == 200)
+		{
+			(*stack)->prev = temp_stack;
+			temp_stack->next = *stack;
+			*stack = temp_stack;
+		}
+		else if (queueORstack.status == 100)
+		{
+			while (new->next != NULL)
+				new = new->next;
+			new->next = temp_stack;
+			temp_stack->prev = new;
+		}
 	}
 	else
 		*stack = temp_stack;
