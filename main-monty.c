@@ -1,5 +1,9 @@
 #include "monty.h"
 
+/* Global Variables */
+queueORstack_t queueORstack = {200};
+
+/* Local prototypes */
 void pint_func(stack_t **stack, unsigned int line_number);
 
 /**
@@ -55,6 +59,18 @@ int main(int argc, char *argv[])
 
 		if (op_code == NULL || op_code[0] == '#')
 			continue;
+
+		if (strcmp(op_code, "queue") == 0)
+		{
+			queueORstack.status = 100;
+			continue;
+		}
+
+		if (strcmp(op_code, "stack") == 0)
+		{
+			queueORstack.status = 200;
+			continue;
+		}
 
 		if (strcmp(op_code, "push") == 0)
 		{
