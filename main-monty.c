@@ -35,6 +35,9 @@ int main(int argc, char *argv[])
 		{"push", push_func},
 		{"mod", mod_func},
 		{"pchar", pchar_func},
+		{"pstr", pstr_func},
+		{"rotl", rotl_func},
+		{"rotr", rotr_func},
 		{NULL, NULL}};
 
 	/* Program Condition checks */
@@ -96,7 +99,7 @@ int main(int argc, char *argv[])
 			}
 			index_two++;
 		}
-		if (index_two > 10)
+		if (index_two > 13)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", index, op_code);
 			exit(EXIT_FAILURE);

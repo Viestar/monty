@@ -62,6 +62,9 @@ void pint_func(stack_t **stack, unsigned int line_number);
 void pop_func(stack_t **stack, unsigned int line_number);
 void swap_func(stack_t **stack, unsigned int line_number);
 void add_func(stack_t **stack, unsigned int line_number);
+void pstr_func(stack_t **stack, unsigned int line_number);
+void rotl_func(stack_t **stack, unsigned int line_number);
+void rotr_func(stack_t **stack, unsigned int line_number);
 
 /* Global variables */
 extern queueORstack_t queueORstack;
