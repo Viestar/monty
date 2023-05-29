@@ -42,6 +42,8 @@ void push_func(stack_t **stack, unsigned int operand)
 	}
 	else
 		*stack = temp_stack;
+
+	freee(temp_stack);
 }
 
 /**
